@@ -31,12 +31,15 @@ def main():
         n = int(sys.stdin.readline().strip())
         parents = list(map(int, sys.stdin.readline().split()))
         print (compute_height(n,parents))
-    if 'F' in text:
+    elif 'F' in text:
         fails = input()
         with open("./test/" + fails,'r') as f:
             n = int(f.readLine().strip())
             parents = list(map(int, f.readLine().strip().split()))
-        print (compute_height(n, parents))
+    else:
+        print("wrong command input")
+        return
+    print (compute_height(n, parents))
 
 
 
