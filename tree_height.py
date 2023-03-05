@@ -2,18 +2,59 @@
 
 import sys
 import threading
+import numpy as np
+
 
 
 def compute_height(n, parents):
     # Write this function
-    max_height = 0
-    # Your code here
-    return max_height
+    koks = np.empty((n,), dtype=object)
+    root=-1
+    for i in range (len(parents)):
+        if parents [i] == -1:
+            root = i
+        else:
+            if koks[parents[i]] is None:
+                koks[parents[i]] = [i]
+            else:
+                koks[parents[i]].append(i)
 
-
+    def height(node):
+        if koks[node] is None:
+            return 1
+        heights = [height(berns) for berns in koks[node]]
+        
+        return max(heights) + 1
+    
+    return height(root)
+    
+    
 def main():
     # implement input form keyboard and from files
+    #text=input("Enter I or F:\n")
+    text=input()
+    if "I" in text:
+        count = int(input())
+        vert = input()
+        vert = np.array(list(map(int, vert.split())))
+        #print (compute_height(n, parents))
+    if "F" in text:
+        fails = input()
+        if "a" in fails:
+            print("wrong file name")
+            return
+        
+        with open("./test/" + fails,'r') as f:
+                count = int(f.readline().strip())
+                vert = f.readline()
+                vert= np.array(list(map(int, vert.split())))
+                #print (compute_height(n, parents))
+    #else:
+           # print("wrong input type")
+           # return
     
+    print (compute_height(count, vert))
+
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
