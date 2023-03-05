@@ -42,16 +42,13 @@ def main():
         if "a" in fails:
             print("wrong file name")
             return
-        try:
-            with open("./test/" + fails,'r') as f:
+        
+        with open("./test/" + fails,'r') as f:
                 count = int(f.readline().strip())
                 vert = f.readline()
                 vert= np.array(list(map(int, vert.split())))
                 #print (compute_height(n, parents))
-        except FileNotFoundError:
-            print("file not found")
-            return
-        else:
+    else:
             print("wrong input type")
             return
     
