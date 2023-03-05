@@ -30,7 +30,8 @@ def compute_height(n, parents):
     
 def main():
     # implement input form keyboard and from files
-    text=input("Enter I or F:\n")
+    #text=input("Enter I or F:\n")
+    text=input()
     if "I" in text:
         count = int(input())
         vert = np.array(list(map(int, input().split())))
@@ -42,8 +43,8 @@ def main():
             return
         try:
             with open("./test/" + fails,'r') as f:
-                count = int(f.readLine())
-                vert= np.array(list(map(int, f.readLine().split())))
+                count = int(f.readline())
+                vert= np.array(list(map(int, f.readline().split())))
                 #print (compute_height(n, parents))
         except FileNotFoundError:
             print("file not found")
