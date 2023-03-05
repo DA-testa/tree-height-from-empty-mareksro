@@ -2,22 +2,27 @@
 
 import sys
 import threading
+import numpy as np
 
 
 
 def compute_height(n, parents):
     # Write this function
-    koks = [[] for _ in range(n)]
+    koks = np.empty((n,), dtype=object)
     for i in range (n):
         if parents [i] == -1:
             root = i
-        elif parents[i] < len(koks):
-            koks[parents[i]].append(i)
+        else:
+            if koks[parents[i]] is None:
+                koks[parents[i]] = [i]
+            else:
+                koks[parents[i]].append(i)
 
     def height(node):
-        heights = [height(berns) for berns in koks[node]]
-        if not heights:
+        if koks[node] is None:
             return 1
+        heights = [height(berns) for berns in koks[node]]
+        
         return max(heights) + 1
     
     return height(root)
@@ -33,7 +38,7 @@ def main():
         print (compute_height(n,parents))
     elif "F" in text:
         fails = input()
-        if "a" not in text:
+        if "a" not in fails:
             with open("./test/" + fails,'r') as f:
                 n = int(f.readLine().strip())
                 parents = list(map(int, f.readLine().strip().split()))
