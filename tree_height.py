@@ -4,6 +4,8 @@ import sys
 import threading
 import numpy as np
 
+
+
 def compute_height(n, parents):
     # Write this function
     koks = np.empty((n,), dtype=object)
@@ -31,19 +33,20 @@ def main():
     text=input("Ievadiet F vai I:\n")
     # text=()
     if "I" in text:
-        n = input()
-        parents = list(map(int, input().split()))
-        print (compute_height(parents))
+        n = int(sys.stdin.readline().strip())
+        parents = list(map(int, sys.stdin.readline().split()))
+        print (compute_height(n,parents))
     elif "F" in text:
         fails = input()
-        if "a" not in fails:
-            with open("./test/" + fails, text ='r') as f:
+        if "a" not in text:
+            with open("./test/" + fails,'r') as f:
                 n = int(f.readLine().strip())
                 parents = list(map(int, f.readLine().strip().split()))
+                print (compute_height(n, parents))
     else:
         print("wrong command input")
         return
-    print (compute_height(parents))
+    
 
 
 
