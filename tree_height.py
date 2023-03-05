@@ -9,7 +9,8 @@ import numpy as np
 def compute_height(n, parents):
     # Write this function
     koks = np.empty((n,), dtype=object)
-    for i in range (n):
+    root=-1
+    for i in range (len(parents)):
         if parents [i] == -1:
             root = i
         else:
@@ -48,7 +49,9 @@ def main():
                 vert = f.readline()
                 vert= np.array(list(map(int, vert.split())))
                 #print (compute_height(n, parents))
-    
+    #else:
+           # print("wrong input type")
+           # return
     
     print (compute_height(count, vert))
 
