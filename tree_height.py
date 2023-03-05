@@ -33,7 +33,7 @@ def main():
     if "I" in text:
         n = input()
         parents = list(map(int, input().split()))
-        print (compute_height(n,parents))
+        print (compute_height(parents))
     elif "F" in text:
         fails = input()
         if "a" not in fails:
