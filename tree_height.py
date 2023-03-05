@@ -27,15 +27,16 @@ def main():
     # implement input form keyboard and from files
     text=input("Ievadiet F vai I:\n")
     # text=()
-    if 'I' in text:
+    if "I" in text:
         n = int(sys.stdin.readline().strip())
         parents = list(map(int, sys.stdin.readline().split()))
         print (compute_height(n,parents))
-    elif 'F' in text:
+    elif "F" in text:
         fails = input()
-        with open("./test/" + fails,'r') as f:
-            n = int(f.readLine().strip())
-            parents = list(map(int, f.readLine().strip().split()))
+        if "a" not in text:
+            with open("./test/" + fails,'r') as f:
+                n = int(f.readLine().strip())
+                parents = list(map(int, f.readLine().strip().split()))
     else:
         print("wrong command input")
         return
