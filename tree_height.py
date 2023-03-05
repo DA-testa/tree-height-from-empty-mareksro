@@ -34,24 +34,22 @@ def main():
     text=input()
     if "I" in text:
         count = int(input())
-        vert = np.array(list(map(int, input().split())))
+        vert = input()
+        vert = np.array(list(map(int, vert.split())))
         #print (compute_height(n, parents))
     if "F" in text:
         fails = input()
         if "a" in fails:
             print("wrong file name")
             return
-        try:
-            with open("./test/" + fails,'r') as f:
-                count = int(f.readline())
-                vert= np.array(list(map(int, f.readline().split())))
+    
+        with open("./test/" + fails,'r') as f:
+            count = int(f.readline().strip())
+            vert= np.array(list(map(int, f.readline().split())))
                 #print (compute_height(n, parents))
-        except FileNotFoundError:
-            print("file not found")
-            return
-        else:
-            print("wrong input type")
-            return
+    else:
+        print("wrong input type")
+        return
     
     print (compute_height(count, vert))
 
