@@ -48,9 +48,7 @@ def main():
                 vert = f.readline()
                 vert= np.array(list(map(int, vert.split())))
                 #print (compute_height(n, parents))
-    else:
-            print("wrong input type")
-            return
+    
     
     print (compute_height(count, vert))
 
