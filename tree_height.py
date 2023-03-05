@@ -45,7 +45,8 @@ def main():
         try:
             with open("./test/" + fails,'r') as f:
                 count = int(f.readline().strip())
-                vert= np.array(list(map(int, f.readline().split())))
+                vert = f.readline()
+                vert= np.array(list(map(int, vert.split())))
                 #print (compute_height(n, parents))
         except FileNotFoundError:
             print("file not found")
