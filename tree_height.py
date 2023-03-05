@@ -4,16 +4,43 @@ import sys
 import threading
 
 
+
 def compute_height(n, parents):
     # Write this function
-    max_height = 0
-    # Your code here
-    return max_height
+    koks = [[] for _ in range(n)]
+    for i in range (n):
+        if parents [i] == -1:
+            root = i
+        elif parents[i] < len(koks):
+            koks[parents[i]].append(i)
 
-
+    def height(node):
+        heights = [height(berns) for berns in koks[node]]
+        if not heights:
+            return 1
+        return max(heights) + 1
+    
+    return height(root)
+    
+    
 def main():
     # implement input form keyboard and from files
-    
+    text=input("Ievadiet F vai I:\n")
+    # text=()
+    if 'I' in text:
+        n = int(sys.stdin.readline().strip())
+        parents = list(map(int, sys.stdin.readline().split()))
+        print (compute_height(n,parents))
+    if 'F' in text:
+        fails = input()
+        with open("./test/" + fails,'r') as f:
+            n = int(f.readLine().strip())
+            parents = list(map(int, f.readLine().strip().split()))
+        print (compute_height(n, parents))
+
+
+
+
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
