@@ -30,26 +30,29 @@ def compute_height(n, parents):
     
 def main():
     # implement input form keyboard and from files
-    text=input("Ievadiet F vai I:\n")
-    # text=()
+    text=input("Enter I or F:\n")
     if "I" in text:
-        n = int(sys.stdin.readline().strip())
-        parents = list(map(int, sys.stdin.readline().split()))
-        print (compute_height(n,parents))
-    elif "F" in text:
+        count = int(input())
+        vert = np.array(list(map(int, input().split())))
+        #print (compute_height(n, parents))
+    if "F" in text:
         fails = input()
-        if "a" not in text:
+        if "a" in fails:
+            print("wrong file name")
+            return
+        try:
             with open("./test/" + fails,'r') as f:
-                n = int(f.readLine().strip())
-                parents = list(map(int, f.readLine().strip().split()))
-                print (compute_height(n, parents))
-    else:
-        print("wrong command input")
-        return
+                count = int(f.readLine())
+                vert= np.array(list(map(int, f.readLine().split())))
+                #print (compute_height(n, parents))
+        except FileNotFoundError:
+            print("file not found")
+            return
+        else:
+            print("wrong input type")
+            return
     
-
-
-
+    print (compute_height(count, vert))
 
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
